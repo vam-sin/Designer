@@ -52,7 +52,7 @@ class Text2ImageDataset(Dataset):
 
         # pdb.set_trace()
 
-        wrong_image = bytes(np.array(example['img']))
+        wrong_image = bytes(np.array(wrong_image))
 
         right_image = Image.open(io.BytesIO(right_image)).resize((64, 64))
         wrong_image = Image.open(io.BytesIO(wrong_image)).resize((64, 64))
