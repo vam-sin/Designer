@@ -64,10 +64,9 @@ class Text2ImageDataset(Dataset):
 
         sample = {
                 'right_images': torch.FloatTensor(right_image),
-                'right_embed': torch.FloatTensor(right_embed),
                 'wrong_images': torch.FloatTensor(wrong_image),
                 'wrong_text': str(wrong_text),
-                'txt': str(txt)
+                'right_txt': str(txt)
                  }
 
         sample['right_images'] = sample['right_images'].sub_(127.5).div_(127.5)
@@ -101,13 +100,10 @@ class Text2ImageDataset(Dataset):
 if __name__ == '__main__':
 	
 	filename = "../ds/flowers.hdf5"
-	f = h5py.File(filename, 'r')
 
 	ds = Text2ImageDataset(filename)
 
-	sample = ds.__getitem__(0)
+	sample = ds.__getitem__(1)
 
 	print(sample)
-
-	print(ds.__len__)
 
